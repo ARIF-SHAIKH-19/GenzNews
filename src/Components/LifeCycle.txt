@@ -1,0 +1,11 @@
+React component life cycle : It means series of event happening from mounting of react component to its unmounting
+defination - mounting : birth of your component
+             ubdate   : growth of your component
+             unmounting : death of our component
+
+Method used in react component lifeCycle :
+1.The constructor for a React component is called before it is mounted
+2.The render() method is the only required method in a class component.render() is used to write the JSX in react. It runs during mounting and ubdating of the component and also important in class based component to render the DOM.also it must be pure.ie.cannot ubdate state in it
+3.componentDidMount() - This method runs after the component is mounted (i.e., after the DOM is updated)
+4.componentDidUbdate() this method is invoked as soon as the ubdating occur, help ubdating DOM in response to props and state changes
+5.componentWillUnmount() this method will run before the component is unmounted or destroyed 
