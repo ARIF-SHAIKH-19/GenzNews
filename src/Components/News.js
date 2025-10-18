@@ -12,7 +12,7 @@ const News = (props) => {
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
     const [totalResults, setTotalResults] = useState(0)
-    // document.title = `${stringCaptilize(props.category)} - GenzNewz`;
+    
 
     //Capitalize the String As Used Above
     const stringCaptilize = (string) => {
@@ -37,11 +37,13 @@ const News = (props) => {
 
     useEffect(() => {
         newsUbdate();
+        document.title = `${stringCaptilize(props.category)} - GenzNewz`;
+        // eslint-disable-next-line
     }, [])
 
     const fetchMoreData = async () => {
-        setPage(page + 1)
         let url = `https://newsapi.org/v2/top-headlines?category=${props.category}&apiKey=${props.apiKey}&pageSize=${props.pageSize}&page=${page + 1}`;
+        setPage(page + 1)
         let data = await fetch(url);
         let parsedData = await data.json();
         //- Appends the new articles to the existing ones using .concat().
@@ -54,7 +56,7 @@ const News = (props) => {
     //Once newsUbdate() updates the state: React sees the state has changed. It re-runs render() to show the updated articles instead of the spinner. 
     return (
         <>
-            <h2>GenzNews - The Top Headlines From {stringCaptilize(props.category)}</h2>
+            <h2 className='mt-3 text-center'>GenzNews - The Top Headlines From {stringCaptilize(props.category)}</h2>
             <div className="container">
                 {/* Shows Spinner Till The screen Is Loading */}
                 {loading && <Spinner />}
